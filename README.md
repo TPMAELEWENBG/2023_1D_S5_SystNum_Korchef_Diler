@@ -9,10 +9,6 @@ Il est possible de communiquer avec le composant à une fréquence de 10 Mhz.
 Les broches connectées au microcontrolleur sont les suivantes : 
 - SCK, c’est l’entrée de l’horloge
 
-- A0, A1 et A2 permettent de communiquer des adresses hardware
-
-- INTB et INTA permettent de faire des interruptions
-
 - NC/CS permet de savoir quel carte est utilisée entre la MCP23S17 et la MCP23017
 
 - VSS et VDD servent à l’alimentation
@@ -21,27 +17,46 @@ Les broches connectées au microcontrolleur sont les suivantes :
 
 - RESET permet de reset le composant
 
-Tableau des pins sur le microcontrolleur en fonction des pins sur le composant : 
+Tableau des pins sur le microcontrolleur en fonction des pins sur le composant :
 
-A0
+PINS COMPOSANT     |      PINS MICROCONTROLLEUR
 
-A1
+SCK                       PC10
 
-A2
+A0                        GND
 
-INTB
+A1                        GND
 
-INTA
+A2                        GND
 
-NC/CS
+NC/CS                     PB7
 
-VSS
+VSS                       GND
 
-VDD
+VDD                       3.3V
 
-SI
+SI                        PB5
 
-SO
+SO                        PC11
 
-RESET
+RESET                     PA0
+
+A0, A1 et A2 permettent de communiquer des adresses hardware
+Un opcode est l'instruction à réaliser par le microcontrolleur
+INTB et INTA permettent de faire des interruptions
+Pour allumer une LED, la valeur de sortie d'une pin doit etre de 0.6V.
+Les résistances servent à limiter le courant dans les LEDs pour ne pas les endommager.
+Leurs valeurs ne sont pas les mêmes car les LEDs sont différentes. 560 ohms pour les vertes et 680 pour les oranges et rouges.
+IODIRA, IODIRB sont les registres qui codent la direction des GPIOs (input ou output)
+GPIOA et GPIOB sont les états des GPIOs (0 ou 1)
+
+Pour que toutes les LEDs soient allumées, les bits de GPIOA et GPIOB doivent tous être à 1, et IODIRA et IODIRB doivent être en input.
+Pour qu'elles soient toutes éteintes, les bits de GPIOA et B doivent être à 0.
+Pour que seulement la LED D508 soit allumée, il faut que le dernier bit de GPIOB soit à 1, et que tous les autres soient à 0.
+
+La séquence de valeur à envoyer pour configurer les pins : 
+CS = 0
+
+
+
 
