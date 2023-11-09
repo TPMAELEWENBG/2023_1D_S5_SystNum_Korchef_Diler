@@ -59,8 +59,8 @@ Il faut write 0 sur les registres IODIRA et IODIRB.
 Adresse de IODIRA : 00h
 Adresse de IODIRB : 10h
 donc on envoie pour mettre le registre IODIRA à 0 : 
-opcode : 01000000, register adress : 00000000, data : 00000000
-et on envoie tout à la suite 010000000000000000000000
+opcode : 0x40, register adress : 0x00 data : 0x00
+et on envoie tout à la suite 0x40 0x00 0x00
 
 donc on envoie pour mettre le registre IODIRB à 0 : 
 opcode : 0x40, register adress : 0x40, data : 0x00
