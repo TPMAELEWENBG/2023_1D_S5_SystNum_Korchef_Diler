@@ -63,17 +63,25 @@ opcode : 01000000, register adress : 00000000, data : 00000000
 et on envoie tout à la suite 010000000000000000000000
 
 donc on envoie pour mettre le registre IODIRB à 0 : 
-opcode : 01000000, register adress : 01000000, data : 00000000
-et on envoie tout à la suite 010000000100000000000000
+opcode : 0x40, register adress : 0x40, data : 0x00
+On envoie une trame de 3 octets : 0x40 0x40 0x00
 
 
 La séquence de valeurs à envoyer pour éteindre puis allumer toutes les LEDs:
 Il faut write 0 sur tous les bits des registres GPIOA et GPIOB puis 1.
 on envoie :
-opcode : 01000000, register adress : 00010010, data : 00000000
-donc on envoie la trame : 010000000001001000000000
+opcode : 0x40, register adress : 0x12, data : 0x00
+donc on envoie la trame : 0x40 0x12 0x00 pour le registre A
+puis 0x40 0x13 0x00 pour le registre B
 
 ensuite on envoie 1 sur les registres : 
-010000000001001011111111
+0x40 0x12 0xFF
+0x40 0x13 0xFF
+
+Configuration du microcontrolleur : 
+
+![image](https://github.com/TPMAELEWENBG/2023_1D_S5_SystNum_Korchef_Diler/assets/150352059/059388e7-4c95-4293-a126-1a67ab4be771)
+
+![image](https://github.com/TPMAELEWENBG/2023_1D_S5_SystNum_Korchef_Diler/assets/150352059/d652617c-44e1-4552-a5be-49fabee669ca)
 
 
