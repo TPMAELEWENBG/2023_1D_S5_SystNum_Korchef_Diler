@@ -1,0 +1,2 @@
+../Core/Src/vu_meter.c:19:5:vu_init	8	static
+../Core/Src/vu_meter.c:57:5:vu_led	8	static
